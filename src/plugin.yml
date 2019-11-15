@@ -1,0 +1,6 @@
+name: AdventCalendar
+author: TheFoxy41
+version: 0.0.1
+main: fr.onecraft.adventCalendar.AdventCalendar
+commands:
+  calendar:
