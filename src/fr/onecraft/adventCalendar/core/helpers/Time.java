@@ -8,7 +8,7 @@ public class Time {
     private static SimpleDateFormat weekDay;
     private static SimpleDateFormat day;
 
-    public static void init() {
+    static {
         DateFormatSymbols symbols = new DateFormatSymbols();
         symbols.setWeekdays(new String[]{
                 "?",

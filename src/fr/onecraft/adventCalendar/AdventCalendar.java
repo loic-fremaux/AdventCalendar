@@ -39,9 +39,6 @@ public class AdventCalendar extends JavaPlugin {
             return;
         }
 
-        // setup times
-        Time.init();
-
         // copy default database configuration
         DatabaseConfig.copyDefaultConfig(this);
 
