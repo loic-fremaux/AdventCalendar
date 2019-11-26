@@ -14,11 +14,14 @@ public class CalendarReward {
     private int coins;
     private List<ItemStack> items;
 
+    private static final String ITEM = "Item: ";
+    private static final String MONEY = "Money: ";
+
     public CalendarReward(int id, String content) {
         this.id = id;
         this.items = new ArrayList<>();
-        if (content.startsWith("Item: ")) {
-            content = content.substring(6);
+        if (content.startsWith(ITEM)) {
+            content = content.substring(ITEM.length());
             for (String item : content.split(",")) {
                 String[] args = item.split(":");
                 this.items.add(new ItemStack(
@@ -26,8 +29,8 @@ public class CalendarReward {
                         args.length == 1 ? 1 : Integer.parseInt(args[1])
                 ));
             }
-        } else if (content.startsWith("Money: ")) {
-            this.coins = Integer.parseInt(content.substring(7));
+        } else if (content.startsWith(MONEY)) {
+            this.coins = Integer.parseInt(content.substring(MONEY.length()));
         } else {
             this.coins = -1;
         }
