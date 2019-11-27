@@ -16,7 +16,7 @@ public class DatabaseCredentials {
     }
 
     String toURI() {
-        return "jdbc:mysql://" + this.host + ":" + this.port + "/" + this.dataBaseName;
+        return "jdbc:mysql://" + this.host + ":" + this.port + "/" + this.dataBaseName + "?useSSL=false";
     }
 
     String getUser() {
