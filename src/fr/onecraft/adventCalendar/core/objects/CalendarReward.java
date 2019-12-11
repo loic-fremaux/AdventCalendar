@@ -26,7 +26,8 @@ public class CalendarReward {
                 String[] args = item.split(":");
                 this.items.add(new ItemStack(
                         Material.valueOf(args[0]),
-                        args.length == 1 ? 1 : Integer.parseInt(args[1])
+                        args.length < 2 ? 1 : Integer.parseInt(args[1]),
+                        args.length < 3 ? 0 : Short.parseShort(args[2])
                 ));
             }
         } else if (content.startsWith(MONEY)) {
