@@ -5,9 +5,11 @@ import fr.onecraft.adventCalendar.core.objects.CalendarReward;
 import fr.onecraft.adventCalendar.core.objects.User;
 import fr.onecraft.adventCalendar.core.objects.WallSign;
 import fr.thefoxy41.queryBuilder.exceptions.DatabaseConnectionException;
+import fr.thefoxy41.queryBuilder.exceptions.DatabaseQueryException;
 import fr.thefoxy41.queryBuilder.objects.Query;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
+import org.bukkit.OfflinePlayer;
 import org.bukkit.block.BlockFace;
 
 import java.sql.ResultSet;
@@ -31,10 +33,18 @@ public class Database {
 
             // create user if no result found
             if (!result.next()) {
+                String name = "?";
+                OfflinePlayer target = Bukkit.getOfflinePlayer(uuid);
+                if (target.isOnline() || !target.getName().isEmpty()) {
+                    name = target.getName();
+                }
+
                 int id = new Query(DatabaseManager.getConnection())
                         .from(USERS)
+                        .insert("name", name)
                         .insert("uuid", uuid.toString())
                         .getRow();
+
                 return new User(id, uuid, new HashSet<>());
             }
 
