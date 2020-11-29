@@ -1,7 +1,7 @@
 package fr.onecraft.adventCalendar.core.database;
 
+import fr.lfremaux.queryBuilder.exceptions.DatabaseConfigurationException;
 import fr.onecraft.adventCalendar.core.database.helpers.DatabaseConfig;
-import fr.thefoxy41.queryBuilder.exceptions.DatabaseConfigurationException;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.sql.Connection;

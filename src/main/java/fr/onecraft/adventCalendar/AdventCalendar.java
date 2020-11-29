@@ -1,12 +1,11 @@
 package fr.onecraft.adventCalendar;
 
+import fr.lfremaux.queryBuilder.exceptions.DatabaseConfigurationException;
 import fr.onecraft.adventCalendar.core.RegisterManager;
 import fr.onecraft.adventCalendar.core.database.DatabaseManager;
 import fr.onecraft.adventCalendar.core.database.helpers.DatabaseConfig;
-import fr.onecraft.adventCalendar.core.helpers.Time;
 import fr.onecraft.adventCalendar.core.objects.User;
 import fr.onecraft.adventCalendar.core.objects.WallCalendar;
-import fr.thefoxy41.queryBuilder.exceptions.DatabaseConfigurationException;
 import net.milkbowl.vault.economy.Economy;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Entity;

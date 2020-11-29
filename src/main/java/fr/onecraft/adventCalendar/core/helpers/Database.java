@@ -1,12 +1,12 @@
 package fr.onecraft.adventCalendar.core.helpers;
 
+import fr.lfremaux.queryBuilder.exceptions.DatabaseConnectionException;
+import fr.lfremaux.queryBuilder.objects.Query;
+import fr.lfremaux.queryBuilder.objects.result.QueryResultSet;
 import fr.onecraft.adventCalendar.core.database.DatabaseManager;
 import fr.onecraft.adventCalendar.core.objects.CalendarReward;
 import fr.onecraft.adventCalendar.core.objects.User;
 import fr.onecraft.adventCalendar.core.objects.WallSign;
-import fr.thefoxy41.queryBuilder.exceptions.DatabaseConnectionException;
-import fr.thefoxy41.queryBuilder.exceptions.DatabaseQueryException;
-import fr.thefoxy41.queryBuilder.objects.Query;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.OfflinePlayer;
@@ -25,7 +25,7 @@ public class Database {
 
     public static User getUser(UUID uuid) {
         try {
-            ResultSet result = new Query(DatabaseManager.getConnection())
+            QueryResultSet result = new Query(DatabaseManager.getConnection())
                     .from(USERS)
                     .select()
                     .where("uuid", uuid.toString())
@@ -48,7 +48,7 @@ public class Database {
                 return new User(id, uuid, new HashSet<>());
             }
 
-            ResultSet openedResult = new Query(DatabaseManager.getConnection())
+            QueryResultSet openedResult = new Query(DatabaseManager.getConnection())
                     .from(OPENED)
                     .select()
                     .where("user_id", result.getInt("id"))
@@ -69,7 +69,7 @@ public class Database {
 
     public static Map<Integer, CalendarReward> getCalendar() {
         try {
-            ResultSet result = new Query(DatabaseManager.getConnection())
+            QueryResultSet result = new Query(DatabaseManager.getConnection())
                     .from(REWARDS)
                     .select()
                     .where("server", Bukkit.getServerName())
@@ -95,7 +95,7 @@ public class Database {
 
     public static WallSign getMainSignLocation() {
         try {
-            ResultSet result = new Query(DatabaseManager.getConnection())
+            QueryResultSet result = new Query(DatabaseManager.getConnection())
                     .from(SIGNS)
                     .select()
                     .where("server", Bukkit.getServerName())
