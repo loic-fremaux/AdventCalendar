@@ -20,6 +20,9 @@ public class WallCalendar {
     public static final String L40 = "§8Trop tard... :c";
     public static final String L41 = "§8§lClique ici !";
     public static final String L42 = "§8Bientôt ! :D";
+    public static final String L43 = "§8Patience...";
+    public static final String L44 = "§cJoyeux Noël !";
+    public static final String L45 = "§8Bientôt 2021 !";
     private static final String L1 = "§c§lCALENDRIER";
     private static final String L2 = "§2%d";
     private static final String L3 = "§2%d Décembre";
@@ -93,13 +96,23 @@ public class WallCalendar {
         signData.setFacingDirection(wallSign.getBlockFace());
         sign.setData(signData);
 
+
         long relative = index == 1 ? 0 : index == 0 ? -DAY_TIME : DAY_TIME;
         Date date = new Date(System.currentTimeMillis() + relative);
+        int dayNumber = Time.getDayNumber(date);
 
         sign.setLine(0, L1);
         sign.setLine(1, L2.replace("%d", Time.getDay(date)));
-        sign.setLine(2, L3.replace("%d", Time.getDayNumber(date) + ""));
-        sign.setLine(3, index == 1 ? L41 : index == 0 ? L40 : L42);
+        sign.setLine(2, L3.replace("%d", dayNumber + ""));
+        if (Time.getMonthNumber(date) != 12) {
+            sign.setLine(3, L43);
+        } else if (Time.getDayNumber(date) == 25) {
+            sign.setLine(3, L44);
+        } else if (Time.getDayNumber(date) > 25) {
+            sign.setLine(3, L45);
+        } else {
+            sign.setLine(3, index == 1 ? L41 : index == 0 ? L40 : L42);
+        }
 
         sign.update();
 

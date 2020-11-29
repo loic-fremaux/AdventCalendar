@@ -31,12 +31,19 @@ public class PlayerListeners implements Listener {
 
         Player player = event.getPlayer();
         Sign sign = (Sign) event.getClickedBlock().getState();
-        if (sign.getLine(3).equals(WallCalendar.L40)) {
-            player.sendMessage(AdventCalendar.PREFIX + "Trop tard... ce jour est déjà passé !");
-            return;
-        } else if (sign.getLine(3).equals(WallCalendar.L42)) {
-            player.sendMessage(AdventCalendar.PREFIX + "Patience... n'ouvre pas ton calendrier trop tôt !");
-            return;
+        switch (sign.getLine(3)) {
+            case WallCalendar.L40:
+                player.sendMessage(AdventCalendar.PREFIX + "Trop tard... ce jour est déjà passé !");
+                return;
+            case WallCalendar.L42:
+                player.sendMessage(AdventCalendar.PREFIX + "Patience... n'ouvre pas ton calendrier trop tôt !");
+                return;
+            case WallCalendar.L43:
+                player.sendMessage(AdventCalendar.PREFIX + "Patience... nous ne sommes pas encore en décembre !");
+                return;
+            case WallCalendar.L45:
+                player.sendMessage(AdventCalendar.PREFIX + "Noël est déjà passé !");
+                return;
         }
 
         User user = User.get(player.getUniqueId());

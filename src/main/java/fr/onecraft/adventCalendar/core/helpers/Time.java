@@ -7,6 +7,7 @@ import java.util.Date;
 public class Time {
     private static final SimpleDateFormat weekDay;
     private static final SimpleDateFormat day;
+    private static final SimpleDateFormat month;
 
     static {
         DateFormatSymbols symbols = new DateFormatSymbols();
@@ -23,6 +24,11 @@ public class Time {
 
         weekDay = new SimpleDateFormat("EEEEE", symbols);
         day = new SimpleDateFormat("dd");
+        month = new SimpleDateFormat("MM");
+    }
+
+    public static int getMonthNumber(Date date) {
+        return Integer.parseInt(month.format(date));
     }
 
     public static int getDayNumber(Date date) {
