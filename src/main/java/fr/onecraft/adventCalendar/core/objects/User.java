@@ -7,11 +7,10 @@ import org.bukkit.Bukkit;
 import java.util.*;
 
 public class User {
-    private int id;
-    private UUID uuid;
-    private Set<Integer> opened;
-
     private static final Map<UUID, User> USERS = new HashMap<>();
+    private final int id;
+    private final UUID uuid;
+    private final Set<Integer> opened;
 
     public User(int id, UUID uuid) {
         this.id = id;
@@ -23,6 +22,18 @@ public class User {
         this.id = id;
         this.uuid = uuid;
         this.opened = opened;
+    }
+
+    public static User get(UUID uuid) {
+        return USERS.get(uuid);
+    }
+
+    public static void loadUser(UUID uuid) {
+        USERS.put(uuid, Database.getUser(uuid));
+    }
+
+    public static void removeUserCache(UUID uuid) {
+        USERS.remove(uuid);
     }
 
     public UUID getUuid() {
@@ -40,17 +51,5 @@ public class User {
 
     public boolean hasOpened(int day) {
         return opened.contains(day);
-    }
-
-    public static User get(UUID uuid) {
-        return USERS.get(uuid);
-    }
-
-    public static void loadUser(UUID uuid) {
-        USERS.put(uuid, Database.getUser(uuid));
-    }
-
-    public static void removeUserCache(UUID uuid) {
-        USERS.remove(uuid);
     }
 }

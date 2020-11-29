@@ -10,12 +10,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CalendarReward {
-    private int id;
-    private int coins;
-    private List<ItemStack> items;
-
     private static final String ITEM = "Item: ";
     private static final String MONEY = "Money: ";
+    private final int id;
+    private final List<ItemStack> items;
+    private int coins;
 
     public CalendarReward(int id, String content) {
         this.id = id;

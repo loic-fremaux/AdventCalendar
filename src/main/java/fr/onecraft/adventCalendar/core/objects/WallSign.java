@@ -4,8 +4,8 @@ import org.bukkit.Location;
 import org.bukkit.block.BlockFace;
 
 public class WallSign {
-    private BlockFace blockFace;
-    private Location location;
+    private final BlockFace blockFace;
+    private final Location location;
 
     public WallSign(BlockFace face, Location location) {
         this.blockFace = face;

@@ -7,7 +7,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.plugin.PluginManager;
 
 public class RegisterManager {
-    private AdventCalendar plugin;
+    private final AdventCalendar plugin;
 
     public RegisterManager(AdventCalendar plugin) {
         this.plugin = plugin;

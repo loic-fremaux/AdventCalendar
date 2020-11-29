@@ -5,8 +5,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Time {
-    private static SimpleDateFormat weekDay;
-    private static SimpleDateFormat day;
+    private static final SimpleDateFormat weekDay;
+    private static final SimpleDateFormat day;
 
     static {
         DateFormatSymbols symbols = new DateFormatSymbols();

@@ -12,7 +12,6 @@ import org.bukkit.Location;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.block.BlockFace;
 
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.*;
 

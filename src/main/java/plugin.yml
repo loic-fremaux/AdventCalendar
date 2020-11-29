@@ -3,4 +3,4 @@ author: Foxy_z
 version: 0.2.0
 main: fr.onecraft.adventCalendar.AdventCalendar
 commands:
-  calendar:
+    calendar:

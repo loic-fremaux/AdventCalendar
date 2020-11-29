@@ -9,7 +9,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 
 public class Config {
 
@@ -23,7 +23,7 @@ public class Config {
 
             if (!file.exists()) return null;
             FileInputStream fileinputstream = new FileInputStream(file);
-            configuration.load(new InputStreamReader(fileinputstream, Charset.forName("UTF-8")));
+            configuration.load(new InputStreamReader(fileinputstream, StandardCharsets.UTF_8));
             return configuration;
         } catch (InvalidConfigurationException | IOException e) {
             e.printStackTrace();

@@ -21,11 +21,9 @@ import java.util.Calendar;
 import java.util.Date;
 
 public class AdventCalendar extends JavaPlugin {
-    private Economy econ;
-
-    public static AdventCalendar INSTANCE;
-
     public static final String PREFIX = "§9Calendrier > §7";
+    public static AdventCalendar INSTANCE;
+    private Economy econ;
 
     @Override
     public void onEnable() {

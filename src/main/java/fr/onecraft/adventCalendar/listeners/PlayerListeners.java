@@ -18,7 +18,7 @@ import org.bukkit.event.player.PlayerQuitEvent;
 import java.util.Date;
 
 public class PlayerListeners implements Listener {
-    private AdventCalendar plugin;
+    private final AdventCalendar plugin;
 
     public PlayerListeners(AdventCalendar plugin) {
         this.plugin = plugin;

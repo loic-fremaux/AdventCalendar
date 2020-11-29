@@ -17,20 +17,17 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class WallCalendar {
-    private Sign[] signs;
-    private int lastCheckDay;
-
-    private static Map<Integer, CalendarReward> REWARDS = new HashMap<>();
-
-    private static final String L1 = "§c§lCALENDRIER";
-    private static final String L2 = "§2%d";
-    private static final String L3 = "§2%d Décembre";
     public static final String L40 = "§8Trop tard... :c";
     public static final String L41 = "§8§lClique ici !";
     public static final String L42 = "§8Bientôt ! :D";
+    private static final String L1 = "§c§lCALENDRIER";
+    private static final String L2 = "§2%d";
+    private static final String L3 = "§2%d Décembre";
     private static final long DAY_TIME = 86_400_000;
-
+    private static Map<Integer, CalendarReward> REWARDS = new HashMap<>();
     private static WallCalendar INSTANCE;
+    private final Sign[] signs;
+    private int lastCheckDay;
 
     public WallCalendar(WallSign wallSign) {
         this.signs = new Sign[3];
@@ -56,6 +53,11 @@ public class WallCalendar {
         return Arrays.stream(INSTANCE.signs).anyMatch(sign -> sign.getLocation().getBlockX() == location.getBlockX()
                 && sign.getLocation().getBlockY() == location.getBlockY()
                 && sign.getLocation().getBlockZ() == location.getBlockZ());
+    }
+
+    public static void load() {
+        REWARDS = Database.getCalendar();
+        new WallCalendar(Database.getMainSignLocation());
     }
 
     private void setup(WallSign wallSign) {
@@ -102,10 +104,5 @@ public class WallCalendar {
         sign.update();
 
         this.signs[index] = sign;
-    }
-
-    public static void load() {
-        REWARDS = Database.getCalendar();
-        new WallCalendar(Database.getMainSignLocation());
     }
 }

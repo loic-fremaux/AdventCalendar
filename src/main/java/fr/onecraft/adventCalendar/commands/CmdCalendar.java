@@ -6,7 +6,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 
 public class CmdCalendar implements CommandExecutor {
-    private AdventCalendar plugin;
+    private final AdventCalendar plugin;
 
     public CmdCalendar(AdventCalendar plugin) {
         this.plugin = plugin;
