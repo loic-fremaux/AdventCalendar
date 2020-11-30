@@ -26,7 +26,9 @@ public class PlayerListeners implements Listener {
 
     @EventHandler
     public void on(PlayerInteractEvent event) {
-        if (!event.getClickedBlock().getType().equals(Material.WALL_SIGN)) return;
+        if (event.getClickedBlock() == null
+                || event.getClickedBlock().getType() == null
+                || !event.getClickedBlock().getType().equals(Material.WALL_SIGN)) return;
         if (!WallCalendar.isCalendar(event.getClickedBlock().getLocation())) return;
 
         Player player = event.getPlayer();
